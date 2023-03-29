@@ -1,0 +1,118 @@
+"use client"
+import React, { useRef, useEffect, useState, useMemo } from 'react'
+import Image from "next/image"
+import dynamic from "next/dynamic"
+import Link from "next/link"
+import { RiArrowRightLine } from 'react-icons/ri'
+// components 
+import SwipeButtons from "./SwipeButtons"
+// styles
+import styles from './Swiper.module.css'
+
+
+
+
+
+const Swiper = ({ data }) => {
+  const [jobData, setJobData] = useState(data)
+
+
+console.log('Jobdata update: ' + jobData.map(job => console.log(job)))
+
+  const removeJob = (id) => {
+      const newJobs = jobData.filter(job => job.id !== id);
+      setJobData(newJobs);
+  }
+
+    const TinderCard = dynamic(() => import('react-tinder-card'), {
+        ssr: false
+    });
+    
+    const saveJob = ( employer, role, desc, quali, img, id) => {
+                    
+        let myjobs = JSON.parse(localStorage.getItem('myjobs') || "[]")
+        console.log(myjobs)
+        let newJob;
+    
+          if (id) {
+            newJob = {
+                employer, role, desc, quali, img, id
+            }
+          } else {
+            return
+          }
+    
+        myjobs.push(newJob)                
+        window.localStorage.setItem('myjobs', JSON.stringify(myjobs))
+    }
+
+
+      const onCardLeftScreen = (myIdentifier) => {
+        console.log('id: ' + myIdentifier + ' left the screen')
+    }
+    
+    const swiped = (dir,  employer, role, desc, quali, img, id, link) => {
+        console.log('id is : ' + id, ' direction is : ' + dir)
+        if (dir == 'up') {
+            console.log('direction is up')
+          saveJob(employer, role, desc, quali, img, id, link)
+          removeJob(id)
+      } 
+      if(dir == 'down') {
+          removeJob(id)
+          console.log('swiped down')
+      }
+      if(dir == 'left') {
+          removeJob(id)
+          console.log('swiped left')
+      }
+      if(dir == 'right') {
+          removeJob(id)
+          console.log('swiped right')
+      }
+      
+  }
+  
+
+    return (
+        <>            
+        <div className={styles.cardContainer}>
+                {
+                jobData.map(({  employer, role, desc, quali, img, id, link }) => (
+                  <div key={id}>
+                    <TinderCard                            
+                    className={`${styles.swiper} pressable`}
+                    onSwipe={(dir) => swiped(dir,  employer, role, desc, quali, img, id, link)}
+                    onCardLeftScreen={() => onCardLeftScreen(id)}            
+                    >
+                      <div className={`${styles.arrowIcon} pressable`}>
+                      <Link href={'/Swipe/' + id} className='pressable'>
+                        <RiArrowRightLine />
+                      </Link>
+              </div> 
+                    <div className={styles.swiperImage} >
+                        <Image
+                            className={styles.img}
+                            src={img}
+                            alt={role}
+                            priority
+                            fill
+                            />
+                      </div>
+                      <div className={styles.overlay}></div>
+                        <div className={styles.info}>
+                                <h2 className={styles.employer}>{employer}</h2>
+                                <h4 className={styles.role}>{role}</h4>
+                            
+                        </div>            
+                    </TinderCard>
+                </div>                        
+                ))
+          } 
+              <SwipeButtons />
+        </div>
+        </>
+    )
+}
+
+export default Swiper

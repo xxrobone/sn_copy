@@ -1,0 +1,5 @@
+.main {
+    max-height: calc(100svh - 16.75rem);
+    height: 100%;
+    position: relative;
+}

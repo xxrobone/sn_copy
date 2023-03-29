@@ -1,0 +1,83 @@
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5rem;
+  color: black;
+}
+
+.hamburger {
+  display: none;
+  border: none;
+}
+
+.navbarButton {
+  background-color: black;
+  display: block;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  width: 25px;
+  z-index: 999;
+}
+
+.navMenu {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navItem {
+  margin-left: 5rem;
+}
+
+.navLink {
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+  .navMenu {
+    align-items: center;
+    background-color: #F8F8F8;
+    box-shadow: 15px 0px 15px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    left: -100%;
+    justify-content: center;
+    position: fixed;
+    text-align: left;
+    transition: 0.3s;
+    top: 7.5rem;
+    width: 100%;
+    height: 705px;
+    z-index: 999;
+  }
+
+  .navMenu.active {
+    left: 0;
+  }
+
+  .navItem {
+    margin: 17px 0;
+  }
+
+  .hamburger {
+    cursor: pointer;
+    display: block;
+    background-color: #F8F8F8;
+  }
+
+  .hamburger.active .navbarButton:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .navbarButton:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .navbarButton:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
