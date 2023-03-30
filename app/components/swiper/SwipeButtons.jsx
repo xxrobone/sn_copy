@@ -1,13 +1,17 @@
 import React from 'react'
-import { RiBookmarkLine, RiCloseLine } from 'react-icons/ri';
+import { VscRefresh } from 'react-icons/vsc'
+import { BsBookmark } from 'react-icons/bs'
+import { VscClose } from 'react-icons/vsc'
 import { MdOutlineRefresh } from 'react-icons/md';
-
 import styles from './SwipeButtons.module.css'
 
-const SwipeButtons = () => {
+const SwipeButtons = ({ setJobData, saveJob, jobData }) => {
+  
+  const { employer, role, desc, quali, img, id, link } = jobData
 
     const Refresh = () => {
-        console.log('to refresh jobs / cards');
+      console.log('to refresh jobs / cards');
+      setJobData(Jobs)
       };
     
       const doSomething = () => {
@@ -16,18 +20,19 @@ const SwipeButtons = () => {
     
       function handleSave() {
         console.log('Function for saving job to db or localstorage, cookie etc');
+        saveJob(employer, role, desc, quali, img, id, link)
     }
     
   return (
     <div className={styles.iconsWrapper}>
     <div className={styles.iconWrapper}>
-      <MdOutlineRefresh onClick={() => Refresh()} />
+      <VscRefresh onClick={() => Refresh()} />
     </div>
     <div className={styles.iconWrapper}>
-      <RiBookmarkLine onClick={() => handleSave()} />
+      <BsBookmark onClick={() => handleSave(employer, role, desc, quali, img, id, link)} />
     </div>
     <div className={styles.iconWrapper}>
-      <RiCloseLine onClick={() => doSomething()} />
+      <VscClose onClick={() => doSomething()} />
     </div>
   </div>
   )

@@ -1,14 +1,13 @@
 .headerContainer{
-  width: 120px;
+  width: 110px;
   z-index: 100;
-  margin: 30px;
-  height: 5.5rem;
+  margin: 30px 30px;
 }
 
 .headerIcon1{
   position: relative;
-  top: 13px;
-  left: -10px;
+  top: 22px;
+  left: 0px;
 }
 
 .headerIcon2{

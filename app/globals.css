@@ -91,7 +91,7 @@ html, body {
   background: #F8F8F8;
   color: #fff;
   line-height: 1;
-  max-height: 100svh;
+  height: 100vh;
   
 }
   div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
@@ -137,3 +137,10 @@ input{
   border-radius: 0;
 }
 
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+ */

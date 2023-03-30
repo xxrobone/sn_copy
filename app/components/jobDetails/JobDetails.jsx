@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { RiBookmarkLine, RiCloseLine, RiArrowRightLine } from 'react-icons/ri'
+import { RiBookmarkLine, RiCloseLine } from 'react-icons/ri'
 import {motion} from 'framer-motion'
 
 // styles
@@ -12,7 +12,7 @@ const variants = {
     hide: { opacity: 0, x: 300 },
   }
 
-const JobDetails = ({ employer, role, desc, quali, img, id, link }) => {   
+const JobDetails = ({ employer, role, desc, quali, img, id ,link}) => {   
     const [showMsg, setShowMsg] = useState(false)
     const [jobsLibrary, setJobsLibrary] = useState([])
     const router = useRouter()
@@ -44,12 +44,7 @@ const JobDetails = ({ employer, role, desc, quali, img, id, link }) => {
     }
 
     /* checking jobs on localstorage */
-  /* console.log('these are my jobs from library \n' + jobsLibrary.map((job) => console.log('\n ' + job.employer + job.role))) */
-  
-  const handleApply = () => {
-    window.open(link,
-     '_blank');
-  };
+    console.log('these are my jobs from library \n' + jobsLibrary.map((job) => console.log('\n ' + job.employer + job.role)))
     
 
     // getting the jobs from localstorage
@@ -61,6 +56,12 @@ const JobDetails = ({ employer, role, desc, quali, img, id, link }) => {
             setJobsLibrary([])
         }
     }, [])
+
+    const handleApply = () => {
+      window.open(link,
+       '_blank');
+    };
+    
 
   return (
       <article className={styles.jobsWrapper} key={id}>
@@ -85,8 +86,8 @@ const JobDetails = ({ employer, role, desc, quali, img, id, link }) => {
         <p>45.000</p>
         <h3 className={styles.jobDesc}>Anställningsform</h3>
         <p>Tillsvidareanställning</p>
-      </div>
-      <button className={styles.applyButton} onClick={handleApply}>
+          </div>
+          <button className={styles.applyButton} onClick={handleApply}>
         <span>Ansök här</span>
         <span>&rarr;</span>
       </button>

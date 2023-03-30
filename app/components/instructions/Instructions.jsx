@@ -5,6 +5,7 @@ import logo from '/public/images/skelleftea_logo_svart.png'
 import swipeHandIcon from '/public/images/swipe-hand-icon.png'
 import { HiArrowLongRight } from 'react-icons/hi2'
 import { BsFillCircleFill } from 'react-icons/bs'
+import Button from '../buttons/Buttons'
 
 export default function Instructions() {
   return (
@@ -44,7 +45,8 @@ export default function Instructions() {
         </div>
       </div>
       <Link href={'/Swipe'}>
-        <button className={styles.button}>
+        <Button className={styles.button} variant='skogDark'>Gå vidare</Button>
+        {/* <button className={styles.button}>
           <p>Gå vidare</p>
           <HiArrowLongRight 
             size={27}
@@ -53,7 +55,7 @@ export default function Instructions() {
               marginLeft: '169px'
             }}
           />
-        </button>
+        </button> */}
       </Link>
     </div>
   )

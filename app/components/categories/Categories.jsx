@@ -29,7 +29,7 @@ export default function Categories() {
       </div>
 
       <div className={styles.paragraphStyle}>
-          <p className={styles.paragraph1}>sök jonn utifrån branch</p>
+          <p className={styles.paragraph1}>sök jobb utifrån branch</p>
         </div>
 
       <Link href={'/.'}>

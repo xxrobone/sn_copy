@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import {useState, useEffect } from 'react'
 import Image from 'next/image';
 import styles from "../savedJobs/savedJobs.module.css"
@@ -8,11 +9,19 @@ import { RiCloseLine } from 'react-icons/ri';
 
 function SavedJobs() {
   const [jobs, setJobs] = useState([])
-
   
-    const removeElement = (index) => {
+  const removeElement = (id, index) => {
+      // remove from state
       const newJobs = jobs.filter((_, i) => i !== index);
       setJobs(newJobs);
+
+
+      // remove from ls
+    const j = JSON.parse(localStorage.getItem('myjobs'));
+    
+      const filteredJobs = j.filter(job => job.id !== id);
+      window.localStorage.setItem('myjobs', JSON.stringify(filteredJobs))
+      
     };
 
   useEffect(() => {
@@ -30,6 +39,9 @@ function SavedJobs() {
         {jobs.map((job, idx) => (      
           <div key={idx} className={styles.container}
           >
+            <Link href={'/' + job.id} key={idx} className={styles.linkToJob} 
+            >
+              </Link>
             {/* kan comment out this part to take img away */}
                 <div className={styles.imgContainer}>
               <Image
@@ -48,7 +60,7 @@ function SavedJobs() {
               <p className={styles.down}>{job.role}</p>
             </div>
             <div className={styles.clearBoth}></div>
-            <RiCloseLine className={styles.closeBtn} onClick={() => removeElement(idx)} />
+            <RiCloseLine className={styles.closeBtn} onClick={() => removeElement(job.id, idx)} />
             </div>
         ))}
       </div>

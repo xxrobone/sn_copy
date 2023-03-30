@@ -3,19 +3,20 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import { Jobs } from '@/data/jobsArray';
 import JobDetails from '@/app/components/jobDetails/JobDetails';
-import Header from '@/app/components/header/Header';
+import Header from '/app/components/header/Header.jsx'
 
 export default function DetailsPage() {
 
   let id = usePathname();
  
-  id = id.replace('/Swipe/', '')
+  // kan göras på andra sätt, men ville testa detta
+  id = id.replace('/', '')
   
   console.log(id)
 
   return (
     <div>
-      <Header />
+          <Header />
       {Jobs.map((job) => {
         if (id == job.id) {
           /* const { id, title, subtitle, desc, img } = job; */

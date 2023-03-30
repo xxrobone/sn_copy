@@ -31,6 +31,22 @@
   border-radius: 10px;
 }
 
+.linkToJob {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+  width: 60%;
+  background-color: transparent;
+}
+/* 
+.linkToJob:hover,
+.linkToJob:active  {
+  
+} */
+
+
 .imgContainer{
   position: relative;
   width: 76px;
@@ -70,22 +86,6 @@
   margin-top: .3rem;
   font-weight: 400;
 }
-
-/* .jobContainer > p {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-
-.up {
- font-weight: 400;
- margin-bottom: 1.4rem;
-}
-
-.down{
-  font-weight: 400;
-} */
 
 .clearBoth{
   clear:both;

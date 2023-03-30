@@ -1,7 +1,10 @@
 // import Image from 'next/image'
+'use client'
+import { useEffect } from 'react'
 import { Inter } from 'next/font/google'
 import Landing from './components/landing/Landing'
 import styles from './page.module.css'
+import { Jobs } from '@/data/jobsArray'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -10,6 +13,15 @@ const inter = Inter({
 })
 
 export default function Home() {
+ 
+  useEffect(() => {
+    if (Jobs) {
+      window.localStorage.setItem('newJobs', JSON.stringify(Jobs))
+    } else {
+      window.localStorage.setItem('newJobs', JSON.stringify([]))
+  }
+  }, [])
+  
   return (
     <main className={`${styles.main} ${inter.className}`}>
       <Landing />

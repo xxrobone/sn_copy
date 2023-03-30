@@ -1,0 +1,77 @@
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+    .particle {
+      position: absolute;
+      transition: all 5s ease-out;
+
+    }
+      
+      .particle.circular {
+        background-color: var(--color);
+        width: var(--size);
+        height: var(--size);
+        border-radius: var(--size);
+        transform: translate(var(--x), var(--y));
+      }
+      
+      .particle.rectangular {
+        background-color: var(--color);
+        width: var(--size);
+        height: var(--size);
+        transform: 
+          translate(var(--x), var(--y)) 
+          rotateX(var(--rotate)) 
+          rotateY(var(--rotate));
+      }
+      
+      .particle.squiggle {
+        stroke: var(--color);
+        stroke-width: 15px;
+        stroke-linecap: round;
+        overflow: visible;
+        width: var(--size);
+        height: var(--size);
+        transform: 
+          translate(var(--x), var(--y))
+          rotateY(var(--rotate));
+      }
+
+      .btn {
+        height: 40px;
+        width: 200px;
+        font-family: Roboto;
+        background-color: #34495e;
+        color: white;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all .2s ease-out;
+        user-select: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+      }
+        
+        .btn:hover {
+          background-color: #8e44ad;
+        }
+        
+        .popper {
+          margin-right: 20px;
+          margin-left: -20px;
+          width: 64px;
+          height: 64px;
+          background-image: url('https://cdn.yoavik.com/codepen/react-confetti/confetti.png');
+        }
+      
+    
+  
