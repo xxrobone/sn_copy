@@ -6,7 +6,7 @@
   width: 100%;
   overflow-y: scroll;
   color: black;
-  background-color: #CBC497
+  background-color: transparent;
 }
 
 .wrapper::-webkit-scrollbar {
