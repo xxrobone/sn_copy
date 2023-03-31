@@ -14,7 +14,7 @@ export default function Landing() {
         alt="background image"
         priority='true'
         fill
-        sizes="100vw"
+        sizes="100%"
         style={{
           objectFit: "cover"
         }} /> 
@@ -33,7 +33,9 @@ export default function Landing() {
           src={circles}
           className={styles.circles}
           alt="circle images"
-          priority="true" />  
+          priority="true"
+          fill
+        />  
       </div>
       <div className={styles.text}>
           <p>Här finns jobben</p>
